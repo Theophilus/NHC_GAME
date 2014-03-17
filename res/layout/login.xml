@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <View
-        android:id="@+id/view1"
+        android:id="@+id/loginView_space"
         android:layout_width="wrap_content"
         android:layout_height="142dp" />
 
@@ -18,7 +18,7 @@
             android:id="@+id/loginView_name_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Username" />
+            android:text="@string/username_label" />
 
         <EditText
             android:id="@+id/loginView_name_input"
@@ -39,7 +39,7 @@
             android:id="@+id/loginView_password_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password" />
+            android:text="@string/password_label" />
 
         <EditText
             android:id="@+id/loginView_password_input"
@@ -62,20 +62,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.46"
-            android:text="SignUp" />
+            android:text="@string/signup_button" />
 
         <Button
             android:id="@+id/loginView_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.42"
-            android:text="LogIn" />
+            android:text="@string/login_button" />
     </LinearLayout>
 
     <CheckBox
         android:id="@+id/RememberMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Remember me" />
+        android:text="@string/rememberMe_checkbox" />
 
 </LinearLayout>

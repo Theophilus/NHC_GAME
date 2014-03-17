@@ -13,7 +13,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <activity android:name=".view.LoginView" android:label="@string/app_name">
+        <activity android:name=".view.LoginView" 
+            android:label="@string/loginView_name">
     	<intent-filter>
         	<action android:name="android.intent.action.MAIN" />
         	<category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +22,7 @@
     	</activity>
     	
         <activity android:name=".view.RegisterView"
-                  android:label="@string/app_name">
+                  android:label="@string/registerView_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -29,12 +30,75 @@
         </activity>
         
    <activity android:name=".view.ProfileView"
-                  android:label="@string/app_name">
+                  android:label="@string/profileView_name">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
         </activity>  
     
+   <activity android:name=".view.HomeView"
+                  android:label="@string/homeView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.ForumView"
+                  android:label="@string/forumView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.ScoreBoardView"
+                  android:label="@string/scoreboardView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.BenchmarkView"
+                  android:label="@string/benchmarkView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.ImportView"
+                  android:label="@string/importView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.InviteView"
+                  android:label="@string/inviteView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.StateRankView"
+                  android:label="@string/staterankView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
+   <activity android:name=".view.WebsiteView"
+                  android:label="@string/websiteView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
     </application>
 </manifest>

@@ -122,7 +122,7 @@ public class LoginView extends Activity {
     			saveLoggedInUId(theUser.getLong(theUser.getColumnIndex(DatabaseAdapter.COL_ID)), thisUsername, thePassword.getText().toString());
     		    stopManagingCursor(theUser);
     		    theUser.close();
-    		    Intent i = new Intent(v.getContext(), ProfileView.class);
+    		    Intent i = new Intent(v.getContext(), HomeView.class);
     		    startActivity(i);
     		}
     		

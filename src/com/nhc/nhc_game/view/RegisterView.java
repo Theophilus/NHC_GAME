@@ -163,7 +163,7 @@ public class RegisterView extends Activity {
 	    			Toast.makeText(getApplicationContext(), "Your username was created",
 	    			          Toast.LENGTH_SHORT).show();
 	    			saveLoggedInUId(id, username, newPassword.getText().toString());
-	    			Intent i = new Intent(v.getContext(), ProfileView.class);
+	    			Intent i = new Intent(v.getContext(), HomeView.class);
 		    		startActivity(i);
 		    		
 		    		finish();

@@ -1,5 +1,51 @@
 <resources>
-
+	<!-- App name -->
     <string name="app_name">NHC GAME</string>
+    
+    <!-- login view -->
+    <string name="loginView_name">Login</string>
+    <string name="username_label">Username</string>
+    <string name="password_label">password</string>
+    <string name="signup_button">Sign Up</string>
+    <string name="login_button">Login</string>
+    <string name="rememberMe_checkbox">Remember me</string>
+    
+    <!-- register view -->
+    <string name="registerView_name">Register</string>
+    
+    <!-- home view -->
+    <string name="homeView_name">Home</string>
+    <string name="profile_menu">My Profile</string>
+    <string name="forum_menu">Forum</string>
+    <string name="scoreBoard_menu">Score board</string>
+    <string name="scoreBenchmark_menu">Score Benchmark</string>
+    <string name="import_menu">Import Data</string>
+    <string name="stateRank_menu">State Ranks</string>
+    <string name="invite_menu">Invite a friend</string>
+    <string name="viewMap_menu">Map Website</string>
 
+    <!-- profile view -->
+    <string name="profileView_name">My Profile</string>
+    
+    <!-- benchmark view -->
+    <string name="benchmarkView_name">Score Benchmark</string>
+    
+    <!-- forum view -->
+    <string name="forumView_name">Forum</string>
+    
+    <!-- import view -->
+    <string name="importView_name">Import Data</string>
+    
+    <!-- invite View -->
+    <string name="inviteView_name">Invite</string>
+    
+    <!-- scoreboard view -->
+    <string name="scoreboardView_name">Score Board</string>
+    
+    <!-- staterank view -->
+    <string name="staterankView_name">State Rankings</string>
+    
+    <!-- website view -->
+    <string name="websiteView_name">Website</string>
+    
 </resources>
