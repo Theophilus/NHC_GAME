@@ -14,6 +14,10 @@ public class DatabaseAdapter {
 	//Table username and password columns 
 	public static final String COL_USERNAME = "username";
 	public static final String COL_PASSWORD = "password";
+	public static final String COL_FULLNAME = "fullname";
+	public static final String COL_AGE = "age";
+	public static final String COL_SEX = "sex";
+	public static final String COL_STATE = "state";
 	
 	private Context context;
 	private SQLiteDatabase database;
@@ -53,8 +57,15 @@ public class DatabaseAdapter {
 	 * @param password The password.
 	 * @return
 	 */
-	public long createUser(String username, String password) {
-		ContentValues initialValues = createUserTableContentValues(username, password);
+	public long createUser(String username, String password, String fullname, String age, String sex, String state) {
+		System.out.println("username is " + username);
+		System.out.println("password is " + password);
+		System.out.println("fullname is " + fullname);
+		System.out.println("age is " + age);
+		System.out.println("sex is " + sex);
+		System.out.println("state is " + state);
+		
+		ContentValues initialValues = createUserTableContentValues(username, password, fullname, age, sex, state);
 		return database.insert(LOGIN_TABLE, null, initialValues);
 	}
 	
@@ -68,8 +79,8 @@ public class DatabaseAdapter {
 		return database.delete(LOGIN_TABLE, COL_ID + "=" + rowId, null) > 0;
 	}
 	
-	public boolean updateUserTable(long rowId, String username, String password) {
-		ContentValues updateValues = createUserTableContentValues(username, password);
+	public boolean updateUserTable(long rowId, String username, String password, String fullname, String age, String sex, String state) {
+		ContentValues updateValues = createUserTableContentValues(username, password, fullname, age, sex, state);
 		return database.update(LOGIN_TABLE, updateValues, COL_ID + "=" + rowId, null) > 0;
 	}
 	
@@ -80,7 +91,7 @@ public class DatabaseAdapter {
 	 */
 	public Cursor fetchAllUsers() {
 		return database.query(LOGIN_TABLE, new String[] { COL_ID, COL_USERNAME, 
-				COL_PASSWORD }, null, null, null, null, null);
+				COL_PASSWORD, COL_FULLNAME, COL_AGE, COL_SEX, COL_STATE }, null, null, null, null, null);
 	}
 	
 	/**
@@ -108,7 +119,7 @@ public class DatabaseAdapter {
 	 */
 	public Cursor fetchUserById(long rowId) throws SQLException {
 		Cursor myCursor = database.query(LOGIN_TABLE, 
-				new String[] { COL_ID, COL_USERNAME, COL_PASSWORD }, 
+				new String[] { COL_ID, COL_USERNAME, COL_PASSWORD , COL_FULLNAME}, 
 				COL_ID + "=" + rowId, null, null, null, null);
 		if (myCursor != null) {
 			myCursor.moveToFirst();
@@ -122,10 +133,14 @@ public class DatabaseAdapter {
 	 * @param password The password.
 	 * @return The entered values. 
 	 */
-	private ContentValues createUserTableContentValues(String username, String password) {
+	private ContentValues createUserTableContentValues(String username, String password, String fullname, String age, String sex, String state) {
 		ContentValues values = new ContentValues();
 		values.put(COL_USERNAME, username);
 		values.put(COL_PASSWORD, password);
+		values.put(COL_FULLNAME, fullname);
+		values.put(COL_AGE, age);
+		values.put(COL_SEX, sex);
+		values.put(COL_STATE, state);
 		return values;
 	}
 }

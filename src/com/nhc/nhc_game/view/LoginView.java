@@ -1,6 +1,6 @@
 package com.nhc.nhc_game.view;
 
-import com.nhc.nhc_game.view.ProfileView;
+import com.nhc.nhc_game.view.HomeView;
 import com.nhc.nhc_game.view.RegisterView;
 import com.nhc.nhc_game.R;
 

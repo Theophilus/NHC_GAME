@@ -46,52 +46,90 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+	</LinearLayout>
+	<LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" 
+        android:orientation="horizontal" 
+        android:layout_width="fill_parent">
+	</LinearLayout>
+	<LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" 
+        android:orientation="horizontal" 
+        android:layout_width="fill_parent">
+
 		<EditText
-			android:layout_height="wrap_content"
-			android:gravity="left"
-			android:selectAllOnFocus="true"
-			android:lines="1"
-			android:id="@+id/nConfiPass"
-			android:hint="Please confirm password" 
-			android:inputType="textPassword" 
-			android:layout_gravity="fill_horizontal" 
-			android:layout_width="match_parent">
+		    android:id="@+id/nConfiPass"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_weight="1"
+		    android:ems="10"
+		    android:gravity="left"
+		    android:hint="Please confirm password"
+		    android:inputType="textPassword"
+		    android:lines="1"
+		    android:selectAllOnFocus="true" >
+
+		    <requestFocus />
 		</EditText>
+
 	</LinearLayout>
-	<LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" 
-        android:orientation="horizontal" 
-        android:layout_width="fill_parent">
-		<Button
-			android:layout_height="wrap_content"
-			android:gravity="center_vertical|center_horizontal"
-			android:text="Register"
-			android:id="@+id/nRegister"
-			android:clickable="true" 
-			android:layout_width="fill_parent" 
-			android:layout_weight="1">
-			</Button>
-		<Button
-			android:layout_height="wrap_content"
-			android:gravity="center_vertical|center_horizontal"
-			android:text="Clear"
-			android:id="@+id/nClear"
-			android:clickable="true" 
-			android:layout_width="fill_parent" 
-			android:layout_weight="1">
-			</Button>
-	</LinearLayout>
-	<LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" 
-        android:orientation="horizontal" 
-        android:layout_width="fill_parent">
-		<Button
-			android:layout_height="wrap_content"
-			android:gravity="center_vertical|center_horizontal"
-			android:text="Back"
-			android:id="@+id/nBack"
-			android:clickable="true" android:layout_width="fill_parent" android:layout_weight="1"></Button>
-	</LinearLayout>
+
+	<EditText
+	    android:id="@+id/Name"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="Enter Full Name"
+	    android:ems="10"
+	    android:inputType="textPersonName" />
+
+	<EditText
+	    android:id="@+id/Age"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="Enter your age"
+	    android:ems="10" />
+
+	<EditText
+	    android:id="@+id/Sex"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="Enter your sex"
+	    android:ems="10" />
+
+	<EditText
+	    android:id="@+id/CityState"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:hint="City, State"
+	    android:ems="10" />
+
+	<Button
+	    android:id="@+id/nRegister"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:clickable="true"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="Register" />
+
+	<Button
+	    android:id="@+id/nClear"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="1"
+	    android:clickable="true"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="Clear" />
+
+	<Button
+	    android:id="@+id/nBack"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_weight="0.33"
+	    android:clickable="true"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:text="Back" />
+
 </LinearLayout>

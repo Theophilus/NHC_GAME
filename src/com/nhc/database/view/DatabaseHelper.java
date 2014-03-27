@@ -7,11 +7,12 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	// The database name and version
-	private static final String DB_NAME = "login";
+	private static final String DB_NAME = "login1";
 	private static final int DB_VERSION = 1;
 	// The database user table
 	private static final String DB_TABLE = "create table user (id integer primary key autoincrement, " 
-											+ "username text not null, password text not null);";
+											+ "username text not null, password text not null, fullname text not null, age integer not null, " 
+											+ "sex text not null, state text not null);";
 	/**
 	 * Database Helper constructor. 
 	 * @param context
@@ -24,13 +25,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 */
 	@Override
 	public void onCreate(SQLiteDatabase database) {
+		System.out.println("Table craete sql is"+ DB_TABLE);
 		database.execSQL(DB_TABLE);
+		
+
 	}
 	/**
 	 * Handles the table version and the drop of a table.   
 	 */			
 	@Override
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+		
+		if (newVersion > oldVersion)
+		{
+			System.out.println("Inside upgrade");
+			database.execSQL("ALTER TABLE" + DB_TABLE + " ADD COLUMN" + "fullname text");
+		}
 		Log.w(DatabaseHelper.class.getName(),
 				"Upgrading databse from version" + oldVersion + "to " 
 				+ newVersion + ", which will destroy all old data");

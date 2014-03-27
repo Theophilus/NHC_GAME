@@ -17,7 +17,7 @@ public class ProfileView extends Activity {
     }
 	    
 	public void initControls(){
-		helloTextView = (TextView)findViewById(R.id.myTextView);
+		
 	}
 }
 	

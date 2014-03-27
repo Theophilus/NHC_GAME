@@ -24,6 +24,10 @@ public class RegisterView extends Activity {
 	private EditText newUsername;
 	private EditText newPassword;
 	private EditText newConfiPass;
+	private EditText newFullName;
+	private EditText newAge;
+	private EditText newSex;
+	private EditText newState;
 	private Button registerButton;
 	private Button clearButton;
 	private Button backButton;
@@ -53,6 +57,10 @@ public class RegisterView extends Activity {
 		 	newUsername = (EditText) findViewById(R.id.nUsername);
 		 	newPassword = (EditText) findViewById(R.id.nPassword);
 		 	newConfiPass = (EditText) findViewById(R.id.nConfiPass);
+		 	newFullName = (EditText) findViewById(R.id.Name);
+		 	newAge = (EditText) findViewById(R.id.Age);
+		 	newSex = (EditText) findViewById(R.id.Sex);
+		 	newState = (EditText) findViewById(R.id.CityState);
 		 	registerButton = (Button) findViewById(R.id.nRegister);
 		 	clearButton = (Button) findViewById(R.id.nClear);
 		 	backButton = (Button) findViewById(R.id.nBack);
@@ -79,6 +87,10 @@ public class RegisterView extends Activity {
 	    	newUsername.setText("");
 	    	newPassword.setText("");
 	    	newConfiPass.setText("");
+	    	newFullName.setText("");
+	    	newAge.setText("");
+	    	newSex.setText("");
+	    	newState.setText("");
 	    }
 	 
 	 /**
@@ -99,6 +111,10 @@ public class RegisterView extends Activity {
 	    	String username = newUsername.getText().toString();
 	    	String password = newPassword.getText().toString();
 	    	String confirmpassword = newConfiPass.getText().toString();
+	    	String fullname = newFullName.getText().toString();
+	    	String age = newAge.getText().toString();
+	    	String sex = newSex.getText().toString();
+	    	String state = newState.getText().toString();
 	    	
 	    	//Check if all fields have been completed.
 	    	if (username.equals("") || password.equals("")){
@@ -158,7 +174,7 @@ public class RegisterView extends Activity {
 	        		user.close();
 	        	}
 	        	//Create the new username.
-	    		long id = dbHelper.createUser(username, password);
+	    		long id = dbHelper.createUser(username, password, fullname, age, sex, state);
 	    		if (id > 0) {
 	    			Toast.makeText(getApplicationContext(), "Your username was created",
 	    			          Toast.LENGTH_SHORT).show();
@@ -168,7 +184,7 @@ public class RegisterView extends Activity {
 		    		
 		    		finish();
 	    		} else {
-	    			Toast.makeText(getApplicationContext(), "Failt to create new username",
+	    			Toast.makeText(getApplicationContext(), "Failed to create new username",
 	    			          Toast.LENGTH_SHORT).show();
 	    		}
 	    	}

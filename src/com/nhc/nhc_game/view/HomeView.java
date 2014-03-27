@@ -31,6 +31,7 @@ public class HomeView extends Activity{
 		public void onItemClick(AdapterView<?> adapter, View v, int pos,long id) {
 			// TODO Auto-generated method stub
 			if(pos== 0){
+				
 				Intent i = new Intent(v.getContext(), ProfileView.class);
     		    startActivity(i);
 			}
