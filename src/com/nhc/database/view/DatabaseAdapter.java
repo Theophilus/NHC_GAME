@@ -100,10 +100,19 @@ public class DatabaseAdapter {
 	 * @return
 	 */
 	public Cursor fetchUser(String username, String password) {
-		Cursor myCursor = database.query(LOGIN_TABLE, 
+		 Cursor myCursor = database.query(LOGIN_TABLE, 
 				new String[] { COL_ID, COL_USERNAME, COL_PASSWORD }, 
 				COL_USERNAME + "='" + username + "' AND " + 
 				COL_PASSWORD + "='" + password + "'", null, null, null, null);
+		
+		
+		
+		
+		/*Cursor myCursor = database.query(LOGIN_TABLE, 
+				new String[] { COL_ID, COL_USERNAME, COL_PASSWORD , COL_FULLNAME}, 
+				COL_USERNAME + "='" + username + "' AND " + 
+				COL_PASSWORD + "='" + password + "' AND "  + COL_FULLNAME + "='" + fullname + "'", null, null, null, null);
+		*/
 		
 		if (myCursor != null) {
 			myCursor.moveToFirst();
@@ -124,6 +133,18 @@ public class DatabaseAdapter {
 		if (myCursor != null) {
 			myCursor.moveToFirst();
 		}
+		return myCursor;
+	}
+	
+	public Cursor fetchUserByUname(String uname) throws SQLException {
+		Cursor myCursor = database.query(LOGIN_TABLE, 
+				new String[] { COL_ID, COL_USERNAME, COL_PASSWORD , COL_FULLNAME, COL_AGE, COL_SEX, COL_STATE}, 
+				COL_USERNAME + "=" +  '"' + uname + '"' , null, null, null, null, null);
+		
+		if (myCursor != null) {
+			myCursor.moveToFirst();
+		}
+		
 		return myCursor;
 	}
 	

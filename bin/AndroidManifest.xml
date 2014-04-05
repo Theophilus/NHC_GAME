@@ -93,6 +93,14 @@
 			</intent-filter>
         </activity> 
         
+   <activity android:name=".view.EditView"
+                  android:label="@string/staterankView_name">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
+        </activity> 
+        
    <activity android:name=".view.WebsiteView"
                   android:label="@string/websiteView_name">
             <intent-filter>
