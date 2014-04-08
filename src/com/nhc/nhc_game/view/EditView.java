@@ -44,12 +44,12 @@ public class EditView extends Activity {
 	
 	public void update(View v)
 	{
-		
+		/*
 	  	String fname = fullname.getText().toString();
 	  	boolean res = dbHelper.updateUserTable(long rowId, String username, String password, String fullname, String age, String sex, String state);
 		
 		Intent i = new Intent(v.getContext(), ProfileView.class);
 		startActivity(i);
-	   
+	   */
 	}
 }
