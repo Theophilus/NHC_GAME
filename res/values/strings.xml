@@ -33,11 +33,21 @@
     <!-- forum view -->
     <string name="forumView_name">Forum</string>
     
+    <!-- exercise view -->
+    <string name="exerciseView_name">Exercise</string>
+    <string name="history_label"></string>
+    
+    
     <!-- import view -->
     <string name="importView_name">Import Data</string>
+    <string name="import_label">Import Data</string>
+    
     
     <!-- invite View -->
     <string name="inviteView_name">Invite</string>
+    <string name="select_invite">Selecct invitation type:</string>
+    <string name="number_label">Enter phone number:</string>
+    <string name="invite_submit">Send Invitation</string>
     
     <!-- scoreboard view -->
     <string name="scoreboardView_name">Score Board</string>

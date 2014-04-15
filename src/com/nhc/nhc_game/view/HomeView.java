@@ -55,8 +55,8 @@ public class HomeView extends Activity{
 				Intent i = new Intent(v.getContext(), StateRankView.class);
     		    startActivity(i);
 			}
-			if(pos ==6){
-				Intent i = new Intent(v.getContext(), ImportView.class);
+			if(pos == 6){
+				Intent i = new Intent(v.getContext(), ExerciseView.class);
     		    startActivity(i);
 			}
 			if(pos == 7){

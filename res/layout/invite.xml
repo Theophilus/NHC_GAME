@@ -2,7 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:id="@+id/ll">
+	 
+    <TextView
+        android:id="@+id/invite_ladel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="@string/select_invite" />
     
+    <Spinner
+        android:id="@+id/invite_dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+	
+    <TextView
+        android:id="@+id/invite_instr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:text="@string/number_label"/>
+
+    <EditText
+        android:id="@+id/invitee_contact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+    
+    <Button
+        android:id="@+id/invite_submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:onClick="snedInvitation()"
+        android:text="@string/invite_submit" />
 
 </LinearLayout>
