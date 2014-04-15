@@ -6,11 +6,9 @@ import java.util.List;
 import com.nhc.nhc_game.R;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
@@ -33,7 +31,12 @@ public class InviteView extends Activity{
         setContentView(R.layout.invite);
         createSelectionList();
         addListenerOnSpinnerItemSelection();
-        sendInvitation();
+        sendButton= (Button) findViewById(R.id.invite_submit_button);
+        sendButton.setOnClickListener(new Button.OnClickListener(){
+       		public void onClick (View v){
+       			sendInvitation(v);
+       		}
+        });
     }
 	
 	// create drop down list 
@@ -83,39 +86,26 @@ public class InviteView extends Activity{
 		  
 	  }
 	  
-	  public void sendInvitation (){
+	  public void sendInvitation (View v){
 		  
-		  sendButton=(Button) findViewById(R.id.invite_submit_button);
+		  
 		  contact=(EditText) findViewById(R.id.invitee_contact);
-		  
-		  sendButton.setOnClickListener(new OnClickListener() {
-			  
-			  public void onClick(View v) {
-				  if(selection == "Email"){
-				  
-					  
-				  }
-				  
-				  if(selection == "Text"){
+		
 					  try {
 						  
 						  SmsManager smsManager = SmsManager.getDefault();
-							smsManager.sendTextMessage(contact.toString(), null, "Get the \"National Health Challenge Game\""
-									+ " hottest fitness game at http://128.6.29.222:8080", null, null);
-							Toast.makeText(getApplicationContext(), "Invitation Sent to !",
+							smsManager.sendTextMessage(contact.getText().toString(), null, "Get the \"National Health Challenge Game\""
+									+ " hottest fitness game at http://128.6.29.222", null, null);
+							Toast.makeText(getApplicationContext(), "Invitation Sent to "+contact.getText().toString(),
 										Toast.LENGTH_LONG).show();
 		 
 						} catch (Exception e) {
 							Toast.makeText(getApplicationContext(),
-								"SMS faild, please try again later! ",
+								"SMS faild, please phone number! ",
 								Toast.LENGTH_LONG).show();
 							e.printStackTrace();
 						}
-					  }
-				  
-			  }
-		 
-			});
+			
 	  }
 	  
 

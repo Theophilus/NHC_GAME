@@ -15,13 +15,14 @@ public final class R {
         public static final int launch_icon=0x7f020001;
     }
     public static final class id {
-        public static final int Age=0x7f060029;
-        public static final int CityState=0x7f06002b;
-        public static final int Label=0x7f060024;
-        public static final int Name=0x7f060028;
+        public static final int Age=0x7f06002a;
+        public static final int CityState=0x7f06002c;
+        public static final int Label=0x7f060025;
+        public static final int Name=0x7f060029;
         public static final int NewName=0x7f060000;
         public static final int RememberMe=0x7f060019;
-        public static final int Sex=0x7f06002a;
+        public static final int ScrollView01=0x7f060024;
+        public static final int Sex=0x7f06002b;
         public static final int button1=0x7f06001b;
         public static final int editText1=0x7f060002;
         public static final int fullname=0x7f06001f;
@@ -43,12 +44,12 @@ public final class R {
         public static final int loginView_password_label=0x7f060015;
         public static final int loginView_signup_button=0x7f060017;
         public static final int loginView_space=0x7f060012;
-        public static final int nBack=0x7f06002e;
-        public static final int nClear=0x7f06002d;
-        public static final int nConfiPass=0x7f060027;
-        public static final int nPassword=0x7f060026;
-        public static final int nRegister=0x7f06002c;
-        public static final int nUsername=0x7f060025;
+        public static final int nBack=0x7f06002f;
+        public static final int nClear=0x7f06002e;
+        public static final int nConfiPass=0x7f060028;
+        public static final int nPassword=0x7f060027;
+        public static final int nRegister=0x7f06002d;
+        public static final int nUsername=0x7f060026;
         public static final int scrollView1=0x7f060004;
         public static final int submit=0x7f060001;
         public static final int tableRow1=0x7f060005;
@@ -62,7 +63,7 @@ public final class R {
         public static final int textView6=0x7f060020;
         public static final int textView7=0x7f060022;
         public static final int textView8=0x7f060023;
-        public static final int website_webview=0x7f06002f;
+        public static final int website_webview=0x7f060030;
     }
     public static final class layout {
         public static final int benchmark=0x7f030000;

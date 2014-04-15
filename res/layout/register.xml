@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<LinearLayout 
     android:layout_height="fill_parent" 
     android:layout_width="fill_parent" 
     android:layout_gravity="fill_horizontal" 
@@ -7,7 +11,7 @@
 	<TextView  
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
-	    android:text="Registration"
+	    android:text=""
 	    android:id="@+id/Label"
 	    />
     <LinearLayout
@@ -133,3 +137,5 @@
 	    android:text="Back" />
 
 </LinearLayout>
+
+</ScrollView>
