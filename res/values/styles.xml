@@ -32,4 +32,8 @@
     <style name="menu_text_align">
         <item name="android:gravity">center</item>
     </style>
+    <style name="login_error">
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#FF0000</item>
+    </style>
 </resources>

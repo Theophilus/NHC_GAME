@@ -120,5 +120,9 @@ public class HomeView extends Activity{
 		
 	}
 	
+	@Override
+	public void onBackPressed() {
+	}
+	
 }
 

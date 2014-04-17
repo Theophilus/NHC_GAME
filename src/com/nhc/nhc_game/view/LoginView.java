@@ -1,12 +1,15 @@
 package com.nhc.nhc_game.view;
-
 import com.nhc.nhc_game.view.HomeView;
 import com.nhc.nhc_game.view.RegisterView;
 import com.nhc.nhc_game.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 import com.nhc.database.view.DatabaseAdapter;
 
@@ -14,12 +17,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginView extends Activity {
@@ -31,6 +34,7 @@ public class LoginView extends Activity {
 	private Button loginButton;
 	private Button registerButton;
 	private	CheckBox rememberDetails;
+	private TextView error;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,10 +44,6 @@ public class LoginView extends Activity {
         Editor editor = mySharedPreferences.edit();
         editor.putLong("uid", 0);
         editor.commit();
-	    
-        dbHelper = new DatabaseAdapter(this);
-        dbHelper.open();
-        
 	    setContentView(R.layout.login);
 	    initControls();
 	    
@@ -107,41 +107,50 @@ public class LoginView extends Activity {
      * @param v
      */
     private void LogMeIn(View v) {
-    	//Get the username and password
-    	String thisUsername = theUsername.getText().toString();
-    	String thisPassword = thePassword.getText().toString();
     	
-    	//Assign the hash to the password
-    	thisPassword = md5(thisPassword);
+    	try{
+    	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
     	
-    	// Check the existing user name and password database
-    	Cursor theUser = dbHelper.fetchUser(thisUsername, thisPassword);
-    	if (theUser != null) {
-    		startManagingCursor(theUser);
-    		if (theUser.getCount() > 0) {
-    			saveLoggedInUId(theUser.getLong(theUser.getColumnIndex(DatabaseAdapter.COL_ID)), thisUsername, thePassword.getText().toString());
-    		    stopManagingCursor(theUser);
-    		    theUser.close();
-    		    Intent i = new Intent(v.getContext(), HomeView.class);
-    		    startActivity(i);
-    		}
-    		
-    		//Returns appropriate message if no match is made
-    		else {
-    			Toast.makeText(getApplicationContext(), 
-    					"You have entered an incorrect username or password.", 
-    					Toast.LENGTH_SHORT).show();
-    			saveLoggedInUId(0, "", "");
-    		}
-    		stopManagingCursor(theUser);
-    		theUser.close();
-    	}
+    	///Load JDBC driver
+	    Class.forName("com.mysql.jdbc.Driver").newInstance();
     	
-    	else {
-    		Toast.makeText(getApplicationContext(), 
-    				"Database query error", 
-    				Toast.LENGTH_SHORT).show();
-    	}
+    	//Create a connection to your DB
+	    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
+	
+	  //Get parameters from the user registration page
+	    String username = theUsername.getText().toString();
+	    String passwd = thePassword.getText().toString();
+	    
+    	//Create a SQL statement
+	    Statement stmt = conn.createStatement();
+    	
+    	//check if usernsme or email exists
+	    String userCheck= "SELECT username, password FROM Player WHERE username = ? AND password=?";
+	    PreparedStatement ps = conn.prepareStatement(userCheck);
+	    ps.setString(1,username);
+	    ps.setString(2,passwd);
+	  	//Run the query against the DB
+	    ResultSet result = ps.executeQuery();
+	    
+	    
+	  	if(result.next() != false){
+	  		
+	  		conn.close();
+	  		Intent i = new Intent(v.getContext(), HomeView.class);
+		    startActivity(i);
+		    
+	  	}
+	  	else {
+	  		error= (TextView) findViewById(R.id.loginView_error);
+	  		error.setText("Username already exists");
+	  		
+	  	}
+    	
+	    conn.close();
+	    
+	} catch (Exception e){
+		System.out.println("Exception: " + e);
+	}
     }
     
     /**

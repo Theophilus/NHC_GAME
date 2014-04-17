@@ -8,6 +8,10 @@
 package com.nhc.nhc_game;
 
 public final class R {
+    public static final class array {
+        public static final int sex=0x7f050001;
+        public static final int states=0x7f050000;
+    }
     public static final class attr {
     }
     public static final class drawable {
@@ -15,55 +19,56 @@ public final class R {
         public static final int launch_icon=0x7f020001;
     }
     public static final class id {
-        public static final int Age=0x7f06002a;
-        public static final int CityState=0x7f06002c;
-        public static final int Label=0x7f060025;
-        public static final int Name=0x7f060029;
-        public static final int NewName=0x7f060000;
-        public static final int RememberMe=0x7f060019;
-        public static final int ScrollView01=0x7f060024;
-        public static final int Sex=0x7f06002b;
-        public static final int button1=0x7f06001b;
-        public static final int editText1=0x7f060002;
-        public static final int fullname=0x7f06001f;
-        public static final int history_text=0x7f060003;
-        public static final int home_gridView=0x7f06000a;
-        public static final int imageSwitcher1=0x7f06001a;
-        public static final int import_button=0x7f060009;
-        public static final int import_webview=0x7f06000b;
-        public static final int invite_dropdown=0x7f06000e;
-        public static final int invite_instr=0x7f06000f;
-        public static final int invite_ladel=0x7f06000d;
-        public static final int invite_submit_button=0x7f060011;
-        public static final int invitee_contact=0x7f060010;
-        public static final int ll=0x7f06000c;
-        public static final int loginView_login_button=0x7f060018;
-        public static final int loginView_name_input=0x7f060014;
-        public static final int loginView_name_label=0x7f060013;
-        public static final int loginView_password_input=0x7f060016;
-        public static final int loginView_password_label=0x7f060015;
-        public static final int loginView_signup_button=0x7f060017;
-        public static final int loginView_space=0x7f060012;
-        public static final int nBack=0x7f06002f;
-        public static final int nClear=0x7f06002e;
-        public static final int nConfiPass=0x7f060028;
-        public static final int nPassword=0x7f060027;
-        public static final int nRegister=0x7f06002d;
-        public static final int nUsername=0x7f060026;
-        public static final int scrollView1=0x7f060004;
-        public static final int submit=0x7f060001;
-        public static final int tableRow1=0x7f060005;
-        public static final int tableRow2=0x7f060006;
-        public static final int tableRow3=0x7f060007;
-        public static final int tableRow4=0x7f060008;
-        public static final int textView1=0x7f06001c;
-        public static final int textView2=0x7f06001d;
-        public static final int textView3=0x7f06001e;
-        public static final int textView5=0x7f060021;
-        public static final int textView6=0x7f060020;
-        public static final int textView7=0x7f060022;
-        public static final int textView8=0x7f060023;
-        public static final int website_webview=0x7f060030;
+        public static final int NewName=0x7f070000;
+        public static final int RememberMe=0x7f07001b;
+        public static final int button1=0x7f07001d;
+        public static final int editText1=0x7f070002;
+        public static final int fullname=0x7f070021;
+        public static final int history_text=0x7f070003;
+        public static final int home_gridView=0x7f07000a;
+        public static final int imageSwitcher1=0x7f07001c;
+        public static final int imageView1=0x7f070012;
+        public static final int import_button=0x7f070009;
+        public static final int import_webview=0x7f07000b;
+        public static final int invite_dropdown=0x7f07000e;
+        public static final int invite_instr=0x7f07000f;
+        public static final int invite_ladel=0x7f07000d;
+        public static final int invite_submit_button=0x7f070011;
+        public static final int invitee_contact=0x7f070010;
+        public static final int ll=0x7f07000c;
+        public static final int loginView_error=0x7f070013;
+        public static final int loginView_login_button=0x7f07001a;
+        public static final int loginView_name_input=0x7f070016;
+        public static final int loginView_name_label=0x7f070015;
+        public static final int loginView_password_input=0x7f070018;
+        public static final int loginView_password_label=0x7f070017;
+        public static final int loginView_signup_button=0x7f070019;
+        public static final int loginView_space=0x7f070014;
+        public static final int reg_DOB=0x7f07002d;
+        public static final int reg_cancel=0x7f07002f;
+        public static final int reg_email=0x7f07002a;
+        public static final int reg_error=0x7f070026;
+        public static final int reg_passwd1=0x7f070028;
+        public static final int reg_passwd2=0x7f070029;
+        public static final int reg_pnumber=0x7f07002b;
+        public static final int reg_register=0x7f070030;
+        public static final int reg_sex=0x7f07002e;
+        public static final int reg_state=0x7f07002c;
+        public static final int reg_username=0x7f070027;
+        public static final int scrollView1=0x7f070004;
+        public static final int submit=0x7f070001;
+        public static final int tableRow1=0x7f070005;
+        public static final int tableRow2=0x7f070006;
+        public static final int tableRow3=0x7f070007;
+        public static final int tableRow4=0x7f070008;
+        public static final int textView1=0x7f07001e;
+        public static final int textView2=0x7f07001f;
+        public static final int textView3=0x7f070020;
+        public static final int textView5=0x7f070023;
+        public static final int textView6=0x7f070022;
+        public static final int textView7=0x7f070024;
+        public static final int textView8=0x7f070025;
+        public static final int website_webview=0x7f070031;
     }
     public static final class layout {
         public static final int benchmark=0x7f030000;
@@ -86,58 +91,65 @@ public final class R {
         public static final int app_name=0x7f040000;
         /**  benchmark view 
          */
-        public static final int benchmarkView_name=0x7f040012;
+        public static final int benchmarkView_name=0x7f040019;
         /**  exercise view 
          */
-        public static final int exerciseView_name=0x7f040014;
+        public static final int exerciseView_name=0x7f04001b;
         /**  forum view 
          */
-        public static final int forumView_name=0x7f040013;
-        public static final int forum_menu=0x7f04000a;
-        public static final int history_label=0x7f040015;
+        public static final int forumView_name=0x7f04001a;
+        public static final int forum_menu=0x7f040011;
+        public static final int history_label=0x7f04001c;
         /**  home view 
          */
-        public static final int homeView_name=0x7f040008;
+        public static final int homeView_name=0x7f04000f;
         /**  import view 
          */
-        public static final int importView_name=0x7f040016;
-        public static final int import_label=0x7f040017;
-        public static final int import_menu=0x7f04000d;
+        public static final int importView_name=0x7f04001d;
+        public static final int import_label=0x7f04001e;
+        public static final int import_menu=0x7f040014;
         /**  invite View 
          */
-        public static final int inviteView_name=0x7f040018;
-        public static final int invite_menu=0x7f04000f;
-        public static final int invite_submit=0x7f04001b;
+        public static final int inviteView_name=0x7f04001f;
+        public static final int invite_menu=0x7f040016;
+        public static final int invite_submit=0x7f040022;
         /**  login view 
          */
         public static final int loginView_name=0x7f040001;
         public static final int login_button=0x7f040005;
-        public static final int number_label=0x7f04001a;
+        public static final int login_error=0x7f040007;
+        public static final int number_label=0x7f040021;
         public static final int password_label=0x7f040003;
         /**  profile view 
          */
-        public static final int profileView_name=0x7f040011;
-        public static final int profile_menu=0x7f040009;
+        public static final int profileView_name=0x7f040018;
+        public static final int profile_menu=0x7f040010;
+        public static final int regCancel=0x7f04000b;
+        public static final int regError=0x7f04000a;
+        public static final int regRegister=0x7f04000c;
+        public static final int regUsername=0x7f040009;
         /**  register view 
          */
-        public static final int registerView_name=0x7f040007;
+        public static final int registerView_name=0x7f040008;
         public static final int rememberMe_checkbox=0x7f040006;
-        public static final int scoreBenchmark_menu=0x7f04000c;
-        public static final int scoreBoard_menu=0x7f04000b;
+        public static final int scoreBenchmark_menu=0x7f040013;
+        public static final int scoreBoard_menu=0x7f040012;
         /**  scoreboard view 
          */
-        public static final int scoreboardView_name=0x7f04001c;
-        public static final int select_invite=0x7f040019;
+        public static final int scoreboardView_name=0x7f040023;
+        public static final int select_invite=0x7f040020;
+        public static final int select_sex=0x7f04000e;
+        public static final int select_state=0x7f04000d;
         public static final int signup_button=0x7f040004;
-        public static final int stateRank_menu=0x7f04000e;
+        public static final int stateRank_menu=0x7f040015;
         /**  staterank view 
          */
-        public static final int staterankView_name=0x7f04001d;
+        public static final int staterankView_name=0x7f040024;
         public static final int username_label=0x7f040002;
-        public static final int viewMap_menu=0x7f040010;
+        public static final int viewMap_menu=0x7f040017;
         /**  website view 
          */
-        public static final int websiteView_name=0x7f04001e;
+        public static final int websiteView_name=0x7f040025;
     }
     public static final class style {
         /** 
@@ -150,13 +162,14 @@ public final class R {
             backward-compatibility can go here.
         
          */
-        public static final int AppBaseTheme=0x7f050000;
+        public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f050001;
-        public static final int menu_bgcolor=0x7f050002;
-        public static final int menu_font=0x7f050003;
-        public static final int menu_text_align=0x7f050004;
+        public static final int AppTheme=0x7f060001;
+        public static final int login_error=0x7f060005;
+        public static final int menu_bgcolor=0x7f060002;
+        public static final int menu_font=0x7f060003;
+        public static final int menu_text_align=0x7f060004;
     }
 }
