@@ -16,7 +16,7 @@ public class WebsiteView extends Activity{
         setContentView(R.layout.website);
        
         WebView StateSite = (WebView) findViewById(R.id.website_webview);
-        StateSite.loadUrl("http://128.6.29.222:8080");
+        StateSite.loadUrl("http://128.6.29.222:8080/nhcgame");
         //StateSite.loadUrl("http://www.example.com");
     }
 }

@@ -5,7 +5,7 @@
     <!-- login view -->
     <string name="loginView_name">Login</string>
     <string name="username_label">Username</string>
-    <string name="password_label">password</string>
+    <string name="password_label">Password</string>
     <string name="signup_button">Sign Up</string>
     <string name="login_button">Login</string>
     <string name="rememberMe_checkbox">Remember me</string>
@@ -17,9 +17,9 @@
     <string name="regError"></string>
     <string name="regCancel">Cancel</string>
     <string name="regRegister">Register</string>
-    <string name="select_state">Select State</string>
+    <string name="select_state">Select one</string>
     <string-array name="states">
-        <item>Select one</item>
+        <item>Select state</item>
         <item>Alabama</item>
         <item>Alaska</item>
         <item>Arizona</item>
@@ -75,7 +75,7 @@
     
     <string name="select_sex">Select One</string>
     <string-array name="sex">
-        <item>Select one</item>
+        <item>Select sex</item>
         <item>Female</item>
         <item>Male</item>
      </string-array>

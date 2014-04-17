@@ -11,8 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.nhc.database.view.DatabaseAdapter;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,12 +21,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class LoginView extends Activity {
 	
 	public static final String MY_PREFS = "SharedPreferences";
-	private DatabaseAdapter dbHelper;
 	private EditText theUsername;
 	private EditText thePassword;
 	private Button loginButton;
@@ -108,6 +104,21 @@ public class LoginView extends Activity {
      */
     private void LogMeIn(View v) {
     	
+    	error= (TextView) findViewById(R.id.loginView_error);
+    	//Get parameters from the user registration page
+	    String username = theUsername.getText().toString();
+	    String passwd = thePassword.getText().toString();
+    	
+    	if(username == null && passwd == null){
+    		error.setText("Enter username and password!");
+    	}
+    	else if(username == null){
+    		error.setText("Enter username !");
+    	}
+    	else if(passwd == null){
+    		error.setText("Enter password!");
+    	}
+    	else {
     	try{
     	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
     	
@@ -116,10 +127,6 @@ public class LoginView extends Activity {
     	
     	//Create a connection to your DB
 	    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
-	
-	  //Get parameters from the user registration page
-	    String username = theUsername.getText().toString();
-	    String passwd = thePassword.getText().toString();
 	    
     	//Create a SQL statement
 	    Statement stmt = conn.createStatement();
@@ -141,7 +148,7 @@ public class LoginView extends Activity {
 		    
 	  	}
 	  	else {
-	  		error= (TextView) findViewById(R.id.loginView_error);
+	  		
 	  		error.setText("Username already exists");
 	  		
 	  	}
@@ -151,6 +158,7 @@ public class LoginView extends Activity {
 	} catch (Exception e){
 		System.out.println("Exception: " + e);
 	}
+    	}
     }
     
     /**

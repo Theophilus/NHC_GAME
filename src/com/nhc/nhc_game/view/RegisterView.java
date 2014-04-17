@@ -106,7 +106,7 @@ public class RegisterView extends Activity {
     	String mail= email.getEditableText().toString();
     	String sx= sex.getSelectedItem().toString();
     	String st= state.getSelectedItem().toString();
-    	System.out.println("check: "+uname);
+    	
     	
     	if(uname.equalsIgnoreCase("")){
     		Toast.makeText(getApplicationContext(), "username is empty",

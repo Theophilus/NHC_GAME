@@ -94,8 +94,8 @@ public class InviteView extends Activity{
 					  try {
 						  
 						  SmsManager smsManager = SmsManager.getDefault();
-							smsManager.sendTextMessage(contact.getText().toString(), null, "Get the \"National Health Challenge Game\""
-									+ " hottest fitness game at http://128.6.29.222", null, null);
+							smsManager.sendTextMessage(contact.getText().toString(), null, "Get the \"National Health Challenge Game\","
+									+ " hottest fitness game at http://128.6.29.222:8080/nhcgame", null, null);
 							Toast.makeText(getApplicationContext(), "Invitation Sent to "+contact.getText().toString(),
 										Toast.LENGTH_LONG).show();
 		 
