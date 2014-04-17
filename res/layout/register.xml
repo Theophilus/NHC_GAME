@@ -1,141 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ScrollView01"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 <LinearLayout 
-    android:layout_height="fill_parent" 
-    android:layout_width="fill_parent" 
-    android:layout_gravity="fill_horizontal" 
-    android:orientation="vertical">
-	<TextView  
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content" 
-	    android:text=""
-	    android:id="@+id/Label"
-	    />
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/reg_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:text="@string/regError" />
+
+    <EditText
+        android:id="@+id/reg_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/reg_passwd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="password"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/reg_passwd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="re-enter password"
+        android:ems="10"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/reg_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:ems="10"
+        android:inputType="textEmailAddress" />
+    
+    <EditText
+        android:id="@+id/reg_pnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phone #"
+        android:ems="10"
+        android:inputType="phone" />
+
+    <Spinner
+        android:id="@+id/reg_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:entries="@array/states"
+        android:prompt="@string/select_state"/>
+
+    <DatePicker
+        android:id="@+id/reg_DOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:id="@+id/reg_sex"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:entries="@array/sex"
+        android:prompt="@string/select_sex" />
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-		<EditText
-	    	android:layout_height="wrap_content"
-	    	android:id="@+id/nUsername"
-	    	android:selectAllOnFocus="true"
-	    	android:lines="1"
-	    	android:hint="Enter your User Name" 
-	    	android:inputType="text" 
-	    	android:layout_width="fill_parent" 
-	    	android:layout_gravity="fill_horizontal" 
-	    	android:gravity="fill_horizontal">
-	    </EditText>
-	</LinearLayout>
-	<LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-		<EditText
-			android:layout_height="wrap_content"
-			android:gravity="left"
-			android:selectAllOnFocus="true"
-			android:lines="1"
-			android:id="@+id/nPassword"
-			android:hint="Please enter a password" 
-			android:inputType="textPassword" 
-			android:layout_gravity="fill_horizontal" 
-			android:layout_width="match_parent">
-		</EditText>
-	</LinearLayout>
-	<LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-	</LinearLayout>
-	<LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" 
-        android:orientation="horizontal" 
-        android:layout_width="fill_parent">
-	</LinearLayout>
-	<LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" 
-        android:orientation="horizontal" 
-        android:layout_width="fill_parent">
+        android:layout_height="wrap_content" >
 
-		<EditText
-		    android:id="@+id/nConfiPass"
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_weight="1"
-		    android:ems="10"
-		    android:gravity="left"
-		    android:hint="Please confirm password"
-		    android:inputType="textPassword"
-		    android:lines="1"
-		    android:selectAllOnFocus="true" >
+        <Button
+            android:id="@+id/reg_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.55"
+            android:text="@string/regCancel" />
 
-		    <requestFocus />
-		</EditText>
+        <Button
+            android:id="@+id/reg_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.41"
+            android:text="@string/regRegister" />
+    </LinearLayout>
 
-	</LinearLayout>
-
-	<EditText
-	    android:id="@+id/Name"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="Enter Full Name"
-	    android:ems="10"
-	    android:inputType="textPersonName" />
-
-	<EditText
-	    android:id="@+id/Age"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="Enter your age"
-	    android:ems="10" />
-
-	<EditText
-	    android:id="@+id/Sex"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="Enter your sex"
-	    android:ems="10" />
-
-	<EditText
-	    android:id="@+id/CityState"
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:hint="City, State"
-	    android:ems="10" />
-
-	<Button
-	    android:id="@+id/nRegister"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_weight="1"
-	    android:clickable="true"
-	    android:gravity="center_vertical|center_horizontal"
-	    android:text="Register" />
-
-	<Button
-	    android:id="@+id/nClear"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_weight="1"
-	    android:clickable="true"
-	    android:gravity="center_vertical|center_horizontal"
-	    android:text="Clear" />
-
-	<Button
-	    android:id="@+id/nBack"
-	    android:layout_width="fill_parent"
-	    android:layout_height="wrap_content"
-	    android:layout_weight="0.33"
-	    android:clickable="true"
-	    android:gravity="center_vertical|center_horizontal"
-	    android:text="Back" />
-
-</LinearLayout>
-
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+     </LinearLayout>
+        
+  </LinearLayout>
 </ScrollView>
+
+
