@@ -65,6 +65,12 @@
         android:entries="@array/states"
         android:prompt="@string/select_state"/>
 
+    <TextView
+        android:id="@+id/reg_DOB_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/regDOB_label" />
+    
     <DatePicker
         android:id="@+id/reg_DOB"
         android:layout_width="wrap_content"

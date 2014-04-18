@@ -1,11 +1,15 @@
 package com.nhc.nhc_game.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.nhc.nhc_game.R;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
@@ -24,11 +28,13 @@ public class InviteView extends Activity{
 	private String selection= "";
 	private Button sendButton;
 	private EditText contact;
+	String userInfo;
 		
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.invite);
+        userInfo = getIntent().getStringExtra("Uname");
         createSelectionList();
         addListenerOnSpinnerItemSelection();
         sendButton= (Button) findViewById(R.id.invite_submit_button);
@@ -98,6 +104,25 @@ public class InviteView extends Activity{
 									+ " hottest fitness game at http://128.6.29.222:8080/nhcgame", null, null);
 							Toast.makeText(getApplicationContext(), "Invitation Sent to "+contact.getText().toString(),
 										Toast.LENGTH_LONG).show();
+							try{
+								String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
+				    	    	
+				    	    	///Load JDBC driver
+				    		    Class.forName("com.mysql.jdbc.Driver").newInstance();
+				    	    	
+				    	    	//Create a connection to your DB
+				    		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
+				    	    	
+			    		  		String insertPlayer = "INSERT INTO Invite(invitee_number, p_username, invite_date) VALUES (?, ?, NOW())";
+			    		  		PreparedStatement ps = conn.prepareStatement(insertPlayer);
+			    		  		ps.setString(1, contact.getText().toString());
+			    		  		ps.setString(2, userInfo);
+			    		  		
+			    		  		ps.executeUpdate();
+			    		  	
+			    		  		} catch (Exception e){
+			    		  			System.out.println("Exception inner: " + e);
+			    		  		}
 		 
 						} catch (Exception e) {
 							Toast.makeText(getApplicationContext(),

@@ -46,8 +46,6 @@ public class RegisterView extends Activity {
 	private int month;
 	private int day;
 	
-	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-	
 	 @Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -169,6 +167,7 @@ public class RegisterView extends Activity {
     		  		error.setText("Username already exists! ");
     		  	}
     		  	else {
+    		  		try{
     		  		String insertPlayer = "INSERT INTO Player(phone_number, username, password, access_token,img, "
     		  				+ "email, sex,DOB, nat_rank, state_rank, e_points) VALUES (?, ?, ?, ?,?,?,?,?,?,?,?)";
     		  		PreparedStatement ps1 = conn.prepareStatement(insertPlayer);
@@ -185,13 +184,10 @@ public class RegisterView extends Activity {
     		  		ps1.setString(10, null);
     		  		ps1.setString(11, null);
     		  		
-    		  		
-    		  		Date date = new Date();
-    		  		String insertRegDate = "INSERT INTO Registers(p_username,reg_date) VALUES (?, ?)";
+    		  		String insertRegDate = "INSERT INTO Registers(p_username,reg_date) VALUES (?, NOW())";
     		  		
     		  		PreparedStatement ps2 = conn.prepareStatement(insertRegDate);
     		  		ps2.setString(1, uname);
-    		  		ps2.setString(2, dateFormat.format(date));
     		  		
     		  		String insertLivesIn = "INSERT INTO Lives_in(s_name, p_username) VALUES (?, ?)";
     		  		PreparedStatement ps3 = conn.prepareStatement(insertLivesIn);
@@ -207,11 +203,13 @@ public class RegisterView extends Activity {
     		  		
     		  		Intent i = new Intent(v.getContext(), LoginView.class);
     			    startActivity(i);
-    		  		
+    		  		} catch (Exception e){
+    		  			System.out.println("Exception inner: " + e);
+    		  		}
     		  	}
     			
     		}catch (Exception e){
-    			
+    			System.out.println("Exception: " + e);
     		}
 		
 	}

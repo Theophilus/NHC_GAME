@@ -141,15 +141,15 @@ public class LoginView extends Activity {
 	    
 	    
 	  	if(result.next() != false){
-	  		
 	  		conn.close();
 	  		Intent i = new Intent(v.getContext(), HomeView.class);
+	  		i.putExtra("Uname", username);
 		    startActivity(i);
 		    
 	  	}
 	  	else {
 	  		
-	  		error.setText("Username already exists");
+	  		error.setText("Username and password does not exists");
 	  		
 	  	}
     	

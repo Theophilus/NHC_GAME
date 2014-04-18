@@ -17,13 +17,14 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 public class HomeView extends Activity{
-
+	 String username;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
        GridView menu_grid=(GridView) findViewById(R.id.home_gridView);
        menu_grid.setAdapter(new MenuAdapter(this));
+       username = getIntent().getStringExtra("Uname");
       
        menu_grid.setOnItemClickListener(new OnItemClickListener(){
     	   
@@ -33,34 +34,42 @@ public class HomeView extends Activity{
 			if(pos== 0){
 				
 				Intent i = new Intent(v.getContext(), ProfileView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 1){
 				Intent i = new Intent(v.getContext(), ForumView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos ==2){
 				Intent i = new Intent(v.getContext(), ScoreBoardView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 3){
 				Intent i = new Intent(v.getContext(), InviteView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 4){
 				Intent i = new Intent(v.getContext(), BenchmarkView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 5){
 				Intent i = new Intent(v.getContext(), StateRankView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 6){
-				Intent i = new Intent(v.getContext(), ExerciseView.class);
+				Intent i = new Intent(v.getContext(), ImportView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 			if(pos == 7){
 				Intent i = new Intent(v.getContext(), WebsiteView.class);
+				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
 		}
@@ -119,10 +128,10 @@ public class HomeView extends Activity{
 		}
 		
 	}
-	
+	/*
 	@Override
 	public void onBackPressed() {
-	}
+	}*/
 	
 }
 

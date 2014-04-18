@@ -2,6 +2,9 @@
 	<!-- App name -->
     <string name="app_name">NHC GAME</string>
     
+    <!-- Auth name -->
+    <string name="auth_name">Authorization</string>
+    
     <!-- login view -->
     <string name="loginView_name">Login</string>
     <string name="username_label">Username</string>
@@ -15,6 +18,7 @@
     <string name="registerView_name">Registration</string>
     <string name="regUsername"></string>
     <string name="regError"></string>
+    <string name="regDOB_label">Date of Birth</string>
     <string name="regCancel">Cancel</string>
     <string name="regRegister">Register</string>
     <string name="select_state">Select one</string>
