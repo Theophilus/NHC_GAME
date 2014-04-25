@@ -14,31 +14,30 @@ import android.widget.Toast;
 
 public class ImportView extends ListActivity {
 	
-    String UserName;
+    String UserInfo;
    
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.import_data);
-        UserName = getIntent().getStringExtra("Uname");
-        String[] values = new String[] { "Walk" };
+        UserInfo = getIntent().getStringExtra("NameAccess");
+        String[] values = new String[] { "Walk","Run","Weight" };
         
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, values);
             setListAdapter(adapter);
-        
-
     }
 
 	@Override
 	  protected void onListItemClick(ListView l, View v, int pos, long id) {
-	    String item = (String) getListAdapter().getItem(pos);
+	    //String item = (String) getListAdapter().getItem(pos);
 	    //Toast.makeText(this, item + " selected", Toast.LENGTH_LONG).show();
 	    if(pos== 0){
-			
+			/*
 			Intent i = new Intent(v.getContext(), Authorization.class);
 			i.putExtra("NameType", UserName+",walk");
 		    startActivity(i);
+		    */
 		}
 	  }   
 }

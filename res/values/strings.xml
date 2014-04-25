@@ -85,14 +85,14 @@
      </string-array>
     
     <!-- home view -->
-    <string name="homeView_name">Home</string>
+    <string name="homeView_name" >Home</string>
     <string name="profile_menu">My Profile</string>
     <string name="forum_menu">Forum</string>
     <string name="scoreBoard_menu">Score board</string>
     <string name="scoreBenchmark_menu">Score Benchmark</string>
     <string name="import_menu">Import Data</string>
     <string name="stateRank_menu">State Ranks</string>
-    <string name="invite_menu">Invite a friend</string>
+    <string name="invite_menu">Invite Friend</string>
     <string name="viewMap_menu">Map Website</string>
 
     <!-- profile view -->

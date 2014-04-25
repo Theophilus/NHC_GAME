@@ -1,12 +1,20 @@
 package com.nhc.nhc_game.view;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import com.nhc.nhc_game.R;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -23,6 +31,7 @@ public class HomeView extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
        GridView menu_grid=(GridView) findViewById(R.id.home_gridView);
+       //menu_grid.setBackgroundColor();
        menu_grid.setAdapter(new MenuAdapter(this));
        username = getIntent().getStringExtra("Uname");
       
@@ -38,36 +47,58 @@ public class HomeView extends Activity{
     		    startActivity(i);
 			}
 			if(pos == 1){
-				Intent i = new Intent(v.getContext(), ForumView.class);
-				i.putExtra("Uname", username);
-    		    startActivity(i);
-			}
-			if(pos ==2){
 				Intent i = new Intent(v.getContext(), ScoreBoardView.class);
 				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
-			if(pos == 3){
+			if(pos == 2){
 				Intent i = new Intent(v.getContext(), InviteView.class);
 				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
-			if(pos == 4){
-				Intent i = new Intent(v.getContext(), BenchmarkView.class);
-				i.putExtra("Uname", username);
-    		    startActivity(i);
-			}
-			if(pos == 5){
+			if(pos == 3){
 				Intent i = new Intent(v.getContext(), StateRankView.class);
 				i.putExtra("Uname", username);
     		    startActivity(i);
 			}
-			if(pos == 6){
-				Intent i = new Intent(v.getContext(), ImportView.class);
-				i.putExtra("Uname", username);
-    		    startActivity(i);
+			if(pos == 4){
+				try{
+			    	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
+			    	
+			    	///Load JDBC driver
+				    Class.forName("com.mysql.jdbc.Driver").newInstance();
+			    	
+			    	//Create a connection to your DB
+				    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
+			    	
+				    String checkAC= "SELECT access_token FROM Player WHERE username = ?";
+				    PreparedStatement ps = conn.prepareStatement(checkAC);
+				    
+				    ps.setString(1,username);
+				  	//Run the query against the DB
+				    ResultSet result = ps.executeQuery();
+				    
+				  	if(result.next() != false){
+				  		String access = result.getString("access_token");
+				  		conn.close();
+				  		if(access != null){
+				  		Intent i = new Intent(v.getContext(), ImportView.class);
+				  		i.putExtra("NameAccess", username+","+ access);
+					    startActivity(i);
+				  		}
+				  		else {
+					  		Intent i = new Intent(v.getContext(), Authorization.class);
+					  		i.putExtra("Name", username);
+						    startActivity(i);
+					  	}
+				  	}
+				    conn.close();
+				    
+				} catch (Exception e){
+					System.out.println("Exception: " + e);
+				}
 			}
-			if(pos == 7){
+			if(pos == 5){
 				Intent i = new Intent(v.getContext(), WebsiteView.class);
 				i.putExtra("Uname", username);
     		    startActivity(i);
@@ -78,9 +109,8 @@ public class HomeView extends Activity{
 	
 	public class MenuAdapter extends BaseAdapter{
 
-		private Integer[] menu_labels ={R.string.profile_menu,R.string.forum_menu, R.string.scoreBoard_menu,
-				R.string.invite_menu,R.string.scoreBenchmark_menu,R.string.stateRank_menu,
-				R.string.import_menu,R.string.viewMap_menu};
+		private Integer[] menu_labels ={R.string.profile_menu,R.string.scoreBoard_menu,
+				R.string.invite_menu,R.string.stateRank_menu,R.string.import_menu,R.string.viewMap_menu};
 		
 		public Context context;
 		
@@ -114,9 +144,10 @@ public class HomeView extends Activity{
 	        if (convertView == null) {
 	            tv = new TextView(context);
 	            tv.setLayoutParams(new GridView.LayoutParams(d.getWidth()/3,d.getHeight()/5 ));
-	            tv.setBackgroundColor(R.style.menu_bgcolor);
+	            //tv.setBackgroundColor(R.style.menu_bgcolor);
+	            tv.setBackgroundColor(Color.rgb(65,105,255));
 	            tv.setTextAppearance(context,R.style.menu_font);
-	            tv.setGravity(R.style.menu_text_align);
+	            tv.setGravity(Gravity.CENTER);
 	        }
 	        else {
 	            tv = (TextView) convertView;

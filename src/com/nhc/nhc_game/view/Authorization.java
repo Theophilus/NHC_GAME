@@ -45,8 +45,7 @@ public class Authorization extends Activity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.auth);
-	        UserName = getIntent().getStringExtra("NameType");
-	        info_array= UserName.split(",");
+	        UserName = getIntent().getStringExtra("Name");
 	      //Force to login on every launch.
 	        CookieManager cookieManager = CookieManager.getInstance();
 	        cookieManager.removeAllCookie();
@@ -102,9 +101,9 @@ public class Authorization extends Activity {
 	 
 	                    String jsonString = EntityUtils.toString(response.getEntity());
 	                    final JSONObject json = new JSONObject(jsonString);
-	 
-	                    String accessToken = json.getString("access_token");
-	                    getTotalDistance();
+	                    accessToken = json.getString("access_token");
+	                    storeAccessCode();
+	                    
 	                } catch (Exception e) {
 	                	Toast.makeText(getApplicationContext(),"Exception occured: " ,Toast.LENGTH_SHORT).show();
 	                    //displayToast("Exception occured:(");
@@ -117,14 +116,14 @@ public class Authorization extends Activity {
 	        networkThread.start();
 	        
 	    }
-		
+		/*
 		private void getTotalDistance() {        
 	        try {
 	            HttpClient client = new DefaultHttpClient();
 	            HttpGet get = new HttpGet("http://api.runkeeper.com/records");
 	            
 	            get.addHeader("Authorization", "Bearer " + accessToken);
-	            get.addHeader("Accept", "*/*");
+	            get.addHeader("Accept", "*");
 	            
 	            HttpResponse response = client.execute(get);
 	            
@@ -169,8 +168,9 @@ public class Authorization extends Activity {
 	  		i.putExtra("Uname", info_array[0]);
 		    startActivity(i);
 	    }
+		*/
 		
-		private void storeData(double data){
+		private void storeAccessCode(){
 			try{
 	        	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
 	        	
@@ -180,14 +180,13 @@ public class Authorization extends Activity {
 	        	//Create a connection to your DB
 	    	    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	        	
-	    	    String insert= "INSERT INTO Upload(exercise_id, e_points, p_username,upload_date password VALUES (?, ?, ?, NOW())";
+	    	    String insert= "UPDATE Player SET access_token=? WHERE username=? ";
 	    	    PreparedStatement ps = conn.prepareStatement(insert);
-	    	    ps.setInt(1,2);
-	    	    ps.setDouble(2,data);
-	    	    ps.setString(3, info_array[0]);
+	    	    ps.setString(1,accessToken);
+	    	    ps.setString(2, UserName);
 
 	    	  	//Run the query against the DB
-	    	    ps.executeQuery();
+	    	    ps.executeUpdate();
 	        	
 	    	    conn.close();
 	    	    
@@ -195,8 +194,8 @@ public class Authorization extends Activity {
 	    		System.out.println("Exception: " + e);
 	    	}
 	        
-	        Intent i = new Intent(getApplicationContext(), HomeView.class);
-	  		i.putExtra("Uname", info_array[0]);
+	        Intent i = new Intent(getApplicationContext(), ImportView.class);
+	  		i.putExtra("NameAccess",UserName+","+accessToken );
 		    startActivity(i);
 	     
 		}
