@@ -57,12 +57,6 @@ public class Authorization extends Activity {
 	        
 	        getAuthorizationCode();
 	    }
-
-	
-		public void onClick(View v) {
-			// TODO Auto-generated method stub
-			
-		}
 		
 		private void getAuthorizationCode() {
 	        String authorizationUrl = "https://runkeeper.com/apps/authorize?response_type=code&client_id=%s&redirect_uri=%s";
@@ -88,10 +82,7 @@ public class Authorization extends Activity {
 		private void getAccessToken(String authCode) {
 	        String accessTokenUrl = "https://runkeeper.com/apps/token?grant_type=authorization_code&code=%s&client_id=%s&client_secret=%s&redirect_uri=%s";
 	        final String finalUrl = String.format(accessTokenUrl, authCode, CLIENT_ID, CLIENT_SECRET, CALLBACK_URL);
-	        
-	        Thread networkThread = new Thread(new Runnable() {
-	            @Override
-	            public void run() {
+	       
 	                try {
 	 
 	                    HttpClient client = new DefaultHttpClient();
@@ -108,67 +99,10 @@ public class Authorization extends Activity {
 	                	Toast.makeText(getApplicationContext(),"Exception occured: " ,Toast.LENGTH_SHORT).show();
 	                    //displayToast("Exception occured:(");
 	                    e.printStackTrace();
-	                    resetUi();
 	                }
-	            }
-	            });
 	        
-	        networkThread.start();
-	        
-	    }
-		/*
-		private void getTotalDistance() {        
-	        try {
-	            HttpClient client = new DefaultHttpClient();
-	            HttpGet get = new HttpGet("http://api.runkeeper.com/records");
-	            
-	            get.addHeader("Authorization", "Bearer " + accessToken);
-	            get.addHeader("Accept", "*");
-	            
-	            HttpResponse response = client.execute(get);
-	            
-	            String jsonString = EntityUtils.toString(response.getEntity());
-	            JSONArray jsonArray = new JSONArray(jsonString);
-	            findTotalWalkingDistance(jsonArray);
-	 
-	        } catch (Exception e) {
-	            //displayToast("Exception occured:(");
-	            e.printStackTrace();
-	            resetUi();
-	        }
 	    }
 		
-		private void findTotalWalkingDistance(JSONArray arrayOfRecords) {
-	        try {
-	            //Each record has activity_type and array of statistics. Traverse to  activity_type = Walking
-	            for (int ii = 0; ii < arrayOfRecords.length(); ii++) {
-	                JSONObject statObject = (JSONObject) arrayOfRecords.get(ii);
-	                if ("Walking".equalsIgnoreCase(statObject.getString("activity_type"))) {
-	                    //Each activity_type has array of stats, navigate to "Overall" statistic to find the total distance walked.
-	                    JSONArray walkingStats = statObject.getJSONArray("stats");
-	                    for (int jj = 0; jj < walkingStats.length(); jj++) {
-	                        JSONObject iWalkingStat = (JSONObject) walkingStats.get(jj);
-	                        if ("Overall".equalsIgnoreCase(iWalkingStat.getString("stat_type"))) {
-	                            long totalWalkingDistanceMeters = iWalkingStat.getLong("value");
-	                            double totalWalkingDistanceMiles = totalWalkingDistanceMeters * 0.00062137;
-	                            storeData(totalWalkingDistanceMiles);
-	                            return;
-	                        }
-	                    }
-	                }
-	            }
-	           
-	        } catch (JSONException e) {
-	        	displayToast("Exception occured:(");
-	            e.printStackTrace();
-	            resetUi();
-	        }
-	        Toast.makeText(getApplicationContext(),"No data to import" ,Toast.LENGTH_SHORT).show();
-	        Intent i = new Intent(getApplicationContext(), HomeView.class);
-	  		i.putExtra("Uname", info_array[0]);
-		    startActivity(i);
-	    }
-		*/
 		
 		private void storeAccessCode(){
 			try{
@@ -199,22 +133,5 @@ public class Authorization extends Activity {
 		    startActivity(i);
 	     
 		}
-		private void resetUi(){
-			runOnUiThread(new Runnable() {            
-	            @Override
-	            public void run() {                
-	                webView.setVisibility(View.GONE);
-	            }
-	        });
-	    } 
 		
-		private void displayToast(final String message) {
-	        runOnUiThread(new Runnable() {
-	 
-	            @Override
-	            public void run() {
-	                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-	            }
-	        });
-	    }
 }

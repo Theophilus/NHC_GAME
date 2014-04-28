@@ -141,6 +141,10 @@ public class LoginView extends Activity {
 	    
 	    
 	  	if(result.next() != false){
+	  		String loginData = "INSERT INTO Login(p_username,login_date,login_time) VALUES (?, NOW(),CURTIME())";
+	  		ps = conn.prepareStatement(loginData);
+	  		ps.setString(1,username);
+	  		ps.executeUpdate();
 	  		conn.close();
 	  		Intent i = new Intent(v.getContext(), HomeView.class);
 	  		i.putExtra("Uname", username);
@@ -149,10 +153,8 @@ public class LoginView extends Activity {
 	  	}
 	  	else {
 	  		
-	  		error.setText("Username and password does not exists");
-	  		
+	  		error.setText("Username and password does not exist");
 	  	}
-    	
 	    conn.close();
 	    
 	} catch (Exception e){

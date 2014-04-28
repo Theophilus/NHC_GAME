@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/HomeView_logoutButton"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="Logout" />
+    
     <GridView
         android:id="@+id/home_gridView"
         android:layout_width="fill_parent"

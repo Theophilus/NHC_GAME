@@ -7,17 +7,15 @@ import com.nhc.nhc_game.R;
 import android.view.View;
 import android.widget.*;
 import android.app.Activity;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import com.nhc.database.view.DatabaseAdapter;
 
 public class EditView extends Activity {
 
 	private EditText fullname;
 	private Button update;
-	private DatabaseAdapter dbHelper;	
+	
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

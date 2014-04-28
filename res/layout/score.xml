@@ -3,6 +3,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/nation_score"
+            android:layout_width="138dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:text="National" />
+
+        <Button
+            android:id="@+id/state_score"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.62"
+            android:text="State" />
+    </LinearLayout>
+	    
+	<ScrollView	
+        	android:id="@+id/scrollView2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content" >
+ 
+		<TableLayout 
+    		android:id="@+id/stateLayout"
+    		android:layout_width="match_parent"
+    		android:layout_height="wrap_content" 
+    		android:stretchColumns="*">
+		</TableLayout>
+
+	</ScrollView>
 
 </LinearLayout>
+

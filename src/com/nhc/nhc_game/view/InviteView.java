@@ -113,7 +113,8 @@ public class InviteView extends Activity{
 				    	    	//Create a connection to your DB
 				    		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 				    	    	
-			    		  		String insertPlayer = "INSERT INTO Invite(invitee_number, p_username, invite_date) VALUES (?, ?, NOW())";
+			    		  		String insertPlayer = "INSERT INTO Invite(invitee_number, p_username, invite_date, invite_time) "
+			    		  				+ "VALUES (?, ?, NOW(),CURTIME())";
 			    		  		PreparedStatement ps = conn.prepareStatement(insertPlayer);
 			    		  		ps.setString(1, contact.getText().toString());
 			    		  		ps.setString(2, userInfo);

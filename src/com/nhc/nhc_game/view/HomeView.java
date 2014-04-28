@@ -21,11 +21,13 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
 public class HomeView extends Activity{
 	 String username;
+	 Button logoutButton;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,13 @@ public class HomeView extends Activity{
        //menu_grid.setBackgroundColor();
        menu_grid.setAdapter(new MenuAdapter(this));
        username = getIntent().getStringExtra("Uname");
+       logoutButton=(Button) findViewById(R.id.HomeView_logoutButton);
+     //Create touch listeners for all buttons.
+   		logoutButton.setOnClickListener(new Button.OnClickListener(){
+   			public void onClick (View v){
+   				LogOut(v);
+   			}
+   		});
       
        menu_grid.setOnItemClickListener(new OnItemClickListener(){
     	   
@@ -159,10 +168,38 @@ public class HomeView extends Activity{
 		}
 		
 	}
-	/*
+	
+	public void LogOut(View v){
+		
+		try{
+	    	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
+	    	
+	    	///Load JDBC driver
+		    Class.forName("com.mysql.jdbc.Driver").newInstance();
+	    	
+	    	//Create a connection to your DB
+		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
+	    
+		  		String loginData = "INSERT INTO Logout(p_username,logout_date,logout_time) VALUES (?, NOW(),CURTIME())";
+		  		PreparedStatement ps = conn.prepareStatement(loginData);
+		  		ps.setString(1,username);
+		  		ps.executeUpdate();
+		  		conn.close();
+		  		Intent i = new Intent(v.getContext(), LoginView.class);
+			    startActivity(i);
+		    conn.close();
+		    
+		} catch (Exception e){
+			System.out.println("Exception: " + e);
+		}
+
+	}
+	
+	//stop back 
 	@Override
 	public void onBackPressed() {
-	}*/
+		//do nothing
+	}
 	
 }
 

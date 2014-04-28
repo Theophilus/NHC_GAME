@@ -4,11 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.sql.Date;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,6 +37,7 @@ public class RegisterView extends Activity {
 	private Button registerButton;
 	private Button cancelButton;
 	private TextView error;
+	private Date dt;
 	
 	final Calendar c = Calendar.getInstance();;
 	private int year;
@@ -104,7 +102,7 @@ public class RegisterView extends Activity {
     	String mail= email.getEditableText().toString();
     	String sx= sex.getSelectedItem().toString();
     	String st= state.getSelectedItem().toString();
-    	
+    	dt= new Date (DOB.getDayOfMonth(),DOB.getMonth(),DOB.getYear());
     	
     	if(uname.equalsIgnoreCase("")){
     		Toast.makeText(getApplicationContext(), "username is empty",
@@ -164,7 +162,8 @@ public class RegisterView extends Activity {
     		    
     		  	if(result.next() != false){
     		  		conn.close();
-    		  		error.setText("Username already exists! ");
+    		  		Toast.makeText(getApplicationContext(), "Username already exists!!",
+    		  				Toast.LENGTH_SHORT).show();
     		  	}
     		  	else {
     		  		try{
@@ -178,13 +177,12 @@ public class RegisterView extends Activity {
     		  		ps1.setString(5, null);
     		  		ps1.setString(6, mail);
     		  		ps1.setString(7, sx);
-    		  		ps1.setString(8, null);
-    		  		//ps1.setString(8, DOB.getMonth() +"-"+ DOB.getDayOfMonth()+"-" + DOB.getYear());
+    		  		ps1.setDate(8 ,dt);
     		  		ps1.setString(9, null);
     		  		ps1.setString(10, null);
     		  		ps1.setString(11, null);
     		  		
-    		  		String insertRegDate = "INSERT INTO Registers(p_username,reg_date) VALUES (?, NOW())";
+    		  		String insertRegDate = "INSERT INTO Registers(p_username,reg_date,reg_time) VALUES (?, NOW(),CURTIME())";
     		  		
     		  		PreparedStatement ps2 = conn.prepareStatement(insertRegDate);
     		  		ps2.setString(1, uname);
