@@ -24,7 +24,7 @@ public class ScoreBoardView extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.score);
         
-        tableLayout = (TableLayout) findViewById(R.id.stateLayout);
+        tableLayout = (TableLayout) findViewById(R.id.scoreLayout);
         
         try{
 	    	String url = "jdbc:mysql://128.6.29.222:3306/nhcgame";
@@ -35,12 +35,20 @@ public class ScoreBoardView extends Activity{
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT state_name, rank, generalpoints FROM Location GROUP BY rank";
+		    String getRanks= "SELECT username, nat_rank, e_points FROM Player WHERE nat_rank IS NOT NULL GROUP BY nat_rank";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
 		    ResultSet result = ps.executeQuery();
 		    
+		    if(result.next() == false){
+		    	System.out.println("In false statement");
+            	TextView nodata= (TextView) findViewById(R.id.no_data);
+            	nodata.setText("No ranks to display");
+            	//nodata.setTextAppearance(getBaseContext(),R.style.menu_font);
+	            //nodata.setGravity(Gravity.CENTER);
+            }
+            else{
 		    //create header
 		    tableRow = new TableRow(getApplicationContext());
 		    
@@ -50,7 +58,7 @@ public class ScoreBoardView extends Activity{
             tableRow.addView(textView);
             
 		    textView = new TextView(getApplicationContext());
-		    textView.setText("State");
+		    textView.setText("Player");
 		    textView.setPadding(20, 20, 20, 20);
             tableRow.addView(textView);
             
@@ -60,7 +68,9 @@ public class ScoreBoardView extends Activity{
             tableRow.addView(textView);
             
             tableLayout.addView(tableRow);
+            //System.out.println("In true statement");
             
+            //generate list
 		  	while(result.next()){
 		  		//System.out.println("In while loop");
 		         tableRow = new TableRow(getApplicationContext());
@@ -72,21 +82,22 @@ public class ScoreBoardView extends Activity{
 		        	 }
 		        	 if(j == 1){
 		        		// System.out.println("In state_name");
-		        		 textView.setText(""+result.getString("state_name"));
+		        		 textView.setText(""+result.getString("username"));
 		        	 }
 		        	 if(j == 2){
 		        		// System.out.println("In general");
-		        		 textView.setText(""+ result.getDouble("generalpoints"));
+		        		 textView.setText(""+ result.getDouble("e_points"));
 			         }
 		             textView.setPadding(20, 20, 20, 20);
 		             tableRow.addView(textView);
 		         }
 		         tableLayout.addView(tableRow);
 		  	}
+		  	
 		  	//tableLayout.addView(tableLayout);
 		  	//setContentView(tableLayout);
 		    conn.close();
-		    
+            } 
 		} catch (Exception e){
 			System.out.println("Exception: " + e);
 		}

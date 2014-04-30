@@ -114,6 +114,7 @@
     <string name="import_label">Import Data</string>
     
     
+    
     <!-- invite View -->
     <string name="inviteView_name">Invite</string>
     <string name="select_invite">Selecct invitation type:</string>
@@ -122,6 +123,7 @@
     
     <!-- scoreboard view -->
     <string name="scoreboardView_name">Score Board</string>
+    <string name="no_ranks"></string>
     
     <!-- staterank view -->
     <string name="staterankView_name">State Rankings</string>

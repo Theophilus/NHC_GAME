@@ -45,7 +45,7 @@ public final class R {
         public static final int loginView_password_label=0x7f080018;
         public static final int loginView_signup_button=0x7f08001a;
         public static final int loginView_space=0x7f080015;
-        public static final int nation_score=0x7f080033;
+        public static final int no_data=0x7f080032;
         public static final int profile_age=0x7f080025;
         public static final int profile_email=0x7f080023;
         public static final int profile_natRank=0x7f08001e;
@@ -67,10 +67,10 @@ public final class R {
         public static final int reg_sex=0x7f08002f;
         public static final int reg_state=0x7f08002c;
         public static final int reg_username=0x7f080027;
+        public static final int scoreLayout=0x7f080034;
         public static final int scrollView1=0x7f080005;
-        public static final int scrollView2=0x7f080034;
+        public static final int scrollView2=0x7f080033;
         public static final int stateLayout=0x7f080035;
-        public static final int state_score=0x7f080032;
         public static final int submit=0x7f080002;
         public static final int tableRow1=0x7f080006;
         public static final int tableRow2=0x7f080007;
@@ -130,6 +130,7 @@ public final class R {
         public static final int loginView_name=0x7f050002;
         public static final int login_button=0x7f050006;
         public static final int login_error=0x7f050008;
+        public static final int no_ranks=0x7f050026;
         public static final int number_label=0x7f050023;
         public static final int password_label=0x7f050004;
         /**  profile view 
@@ -157,12 +158,12 @@ public final class R {
         public static final int stateRank_menu=0x7f050017;
         /**  staterank view 
          */
-        public static final int staterankView_name=0x7f050026;
+        public static final int staterankView_name=0x7f050027;
         public static final int username_label=0x7f050003;
         public static final int viewMap_menu=0x7f050019;
         /**  website view 
          */
-        public static final int websiteView_name=0x7f050027;
+        public static final int websiteView_name=0x7f050028;
     }
     public static final class style {
         /** 
