@@ -180,7 +180,7 @@ public class RegisterView extends Activity {
     		  		ps1.setDate(8 ,dt);
     		  		ps1.setString(9, null);
     		  		ps1.setString(10, null);
-    		  		ps1.setString(11, null);
+    		  		ps1.setDouble(11, 0);
     		  		
     		  		String insertRegDate = "INSERT INTO Registers(p_username,reg_date,reg_time) VALUES (?, NOW(),CURTIME())";
     		  		
