@@ -69,19 +69,22 @@ public class StateRankView extends Activity {
 		        	 if(j == 0){
 		        		// System.out.println("In rank");
 		        		 textView.setText(""+count);
-		        		 String setRanks= "UPDATE Distr SET s_rank =? WHERE s_name =? ";
+		        		 String setRanks= "UPDATE Distr SET s_rank =?,s_points=? WHERE s_name =? ";
 		     		     ps = conn.prepareStatement(setRanks);
 		        	 }
 		        	 if(j == 1){
 		        		// System.out.println("In state_name");
 		        		 textView.setText(""+result.getString("s_name"));
-		        		 ps.setInt(1,count);
-		        		 ps.setString(2,result.getString("s_name"));
-		        		 ps.executeUpdate();
+		        		 
 		        	 }
 		        	 if(j == 2){
 		        		// System.out.println("In general");
-		        		 textView.setText(""+ (result.getDouble("effort")*(3*((52-count)/51))));
+		        		 double score = (result.getDouble("effort")*(3*((52-count)/51)));
+		        		 textView.setText(""+ score);
+		        		 ps.setInt(1,count);
+		        		 ps.setDouble(2, score);
+		        		 ps.setString(3,result.getString("s_name"));
+		        		 ps.executeUpdate();
 			         }
 		             textView.setPadding(20, 20, 20, 20);
 		             tableRow.addView(textView);

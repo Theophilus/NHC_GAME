@@ -127,7 +127,7 @@ public class InviteView extends Activity{
 		 
 						} catch (Exception e) {
 							Toast.makeText(getApplicationContext(),
-								"SMS faild, please phone number! ",
+								"SMS faild, please check phone number! ",
 								Toast.LENGTH_LONG).show();
 							e.printStackTrace();
 						}

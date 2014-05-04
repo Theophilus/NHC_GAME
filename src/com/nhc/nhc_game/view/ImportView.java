@@ -30,7 +30,7 @@ import android.widget.Toast;
 public class ImportView extends ListActivity {
 	
     String UserInfo;
-    String username;
+    String usr;
     String accessToken;
     HttpClient client = new DefaultHttpClient();
     
@@ -42,7 +42,7 @@ public class ImportView extends ListActivity {
         UserInfo = getIntent().getStringExtra("NameAccess");
         String[] temp = UserInfo.split(",");
         accessToken=temp[1];
-        username=temp[0];
+        usr=temp[0];
         String[] values = new String[] { "Walk","Run","Weight Lifting", "CrossFit","Cycling","Skiing"};
         
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -151,9 +151,10 @@ public class ImportView extends ListActivity {
 	    	
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
+		    
 		    String latestImport= "SELECT max(distance) AS latest FROM Upload WHERE p_username=? AND eType=?";
 		    PreparedStatement ps = conn.prepareStatement(latestImport);
-		    ps.setString(1, username);
+		    ps.setString(1,""+ usr);
 		    ps.setString(2, dtype);
 		    ResultSet result = ps.executeQuery();
 		    if(result.next() != false){
@@ -165,15 +166,14 @@ public class ImportView extends ListActivity {
 		    	}
 		    }
 		    
-		  	String uploadData ="INSERT INTO Upload(distance,p_username,eType,upload_date,upload_time) "
-		  			+ "VALUES (?,?,?,NOW(),CURTIME())";
+		  	String uploadData ="INSERT INTO Upload(distance, p_username, eType, upload_date, upload_time) VALUES (?,?,?,NOW(),CURTIME())";
 		  	PreparedStatement ps2 = conn.prepareStatement(uploadData);
 		  	ps2.setDouble(1,distance);
-		  	ps2.setString(2,username);
+		  	ps2.setString(2,""+usr);
 		  	ps2.setString(3,dtype);
 		  	
 		  	//System.out.println(username);
-		  	//ps2.executeUpdate();
+		  	ps2.executeUpdate();
 		  	//ps2.executeQuery();
 		  	Toast.makeText(getApplicationContext(),dtype+" import Successful!" ,Toast.LENGTH_SHORT).show();
 		  	conn.close();
