@@ -43,7 +43,7 @@ public class ImportView extends ListActivity {
         String[] temp = UserInfo.split(",");
         accessToken=temp[1];
         username=temp[0];
-        String[] values = new String[] { "Walk","Run","Weight Lifting", "CrossFit","Cycling","Skiing","Yoga"};
+        String[] values = new String[] { "Walk","Run","Weight Lifting", "CrossFit","Cycling","Skiing"};
         
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, values);
@@ -78,10 +78,7 @@ public class ImportView extends ListActivity {
 	    	getData("Downhill Skiing");
 			
 		}
-	    if(pos== 6){
-	    	getData("Yoga");
-			
-		}
+	   
 	  } 
 
 	private void getData(String dtype) {  
@@ -154,28 +151,31 @@ public class ImportView extends ListActivity {
 	    	
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
-		    String latestImport= "SELECT max(distance) AS latest FROM Upload WHERE p_username =? AND eType =?";
+		    String latestImport= "SELECT max(distance) AS latest FROM Upload WHERE p_username=? AND eType=?";
 		    PreparedStatement ps = conn.prepareStatement(latestImport);
 		    ps.setString(1, username);
 		    ps.setString(2, dtype);
 		    ResultSet result = ps.executeQuery();
 		    if(result.next() != false){
+		    	System.out.println("in false");
 		    	double maxDistance = result.getDouble("latest");
 		    	if( maxDistance >= distance){
 		    		Toast.makeText(getApplicationContext(),"Data already imported!" ,Toast.LENGTH_SHORT).show();
 		    		return;
 		    	}
 		    }
-	    	
-		  	String uploadData ="INSERT INTO Upload(distance, p_username, eType,upload_date,upload_time) "
-		  			+ "VALUES (?,?,?, NOW(),CURTIME())";
+		    
+		  	String uploadData ="INSERT INTO Upload(distance,p_username,eType,upload_date,upload_time) "
+		  			+ "VALUES (?,?,?,NOW(),CURTIME())";
 		  	PreparedStatement ps2 = conn.prepareStatement(uploadData);
 		  	ps2.setDouble(1,distance);
 		  	ps2.setString(2,username);
 		  	ps2.setString(3,dtype);
+		  	
+		  	//System.out.println(username);
+		  	//ps2.executeUpdate();
+		  	//ps2.executeQuery();
 		  	Toast.makeText(getApplicationContext(),dtype+" import Successful!" ,Toast.LENGTH_SHORT).show();
-		  	//System.out.println("stored data");
-		  	ps2.executeUpdate();
 		  	conn.close();
 			    
 		} catch (Exception e){

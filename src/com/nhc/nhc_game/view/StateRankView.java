@@ -34,7 +34,7 @@ public class StateRankView extends Activity {
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT state_name, rank, generalpoints FROM Location GROUP BY rank";
+		    String getRanks= "SELECT s_name, part,effort FROM Distr GROUP BY part DESC";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
@@ -59,23 +59,29 @@ public class StateRankView extends Activity {
             tableRow.addView(textView);
             
             tableLayout.addView(tableRow);
-            
+            int count = 0;
 		  	while(result.next()){
 		  		//System.out.println("In while loop");
+		  		count++;
 		         tableRow = new TableRow(getApplicationContext());
 		         for (int j = 0; j < 3; j++) {
 		        	 textView = new TextView(getApplicationContext());
 		        	 if(j == 0){
 		        		// System.out.println("In rank");
-		        		 textView.setText(""+result.getInt("rank"));
+		        		 textView.setText(""+count);
+		        		 String setRanks= "UPDATE Distr SET s_rank =? WHERE s_name =? ";
+		     		     ps = conn.prepareStatement(setRanks);
 		        	 }
 		        	 if(j == 1){
 		        		// System.out.println("In state_name");
-		        		 textView.setText(""+result.getString("state_name"));
+		        		 textView.setText(""+result.getString("s_name"));
+		        		 ps.setInt(1,count);
+		        		 ps.setString(2,result.getString("s_name"));
+		        		 ps.executeUpdate();
 		        	 }
 		        	 if(j == 2){
 		        		// System.out.println("In general");
-		        		 textView.setText(""+ result.getDouble("generalpoints"));
+		        		 textView.setText(""+ (result.getDouble("effort")*(3*((52-count)/51))));
 			         }
 		             textView.setPadding(20, 20, 20, 20);
 		             tableRow.addView(textView);
