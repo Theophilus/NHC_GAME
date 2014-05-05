@@ -34,7 +34,7 @@ public class StateRankView extends Activity {
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT s_name, part,effort FROM Distr GROUP BY part DESC";
+		    String getRanks= "SELECT s_name, part,effort FROM Distr GROUP BY part DESC ";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
@@ -60,8 +60,11 @@ public class StateRankView extends Activity {
             
             tableLayout.addView(tableRow);
             int count = 0;
+            double score=0;
 		  	while(result.next()){
 		  		//System.out.println("In while loop");
+		  		String setRanks= "UPDATE Distr SET s_rank =?,s_points=? WHERE s_name =? ";
+    		     ps = conn.prepareStatement(setRanks);
 		  		count++;
 		         tableRow = new TableRow(getApplicationContext());
 		         for (int j = 0; j < 3; j++) {
@@ -69,8 +72,7 @@ public class StateRankView extends Activity {
 		        	 if(j == 0){
 		        		// System.out.println("In rank");
 		        		 textView.setText(""+count);
-		        		 String setRanks= "UPDATE Distr SET s_rank =?,s_points=? WHERE s_name =? ";
-		     		     ps = conn.prepareStatement(setRanks);
+		        		 
 		        	 }
 		        	 if(j == 1){
 		        		// System.out.println("In state_name");
@@ -79,17 +81,19 @@ public class StateRankView extends Activity {
 		        	 }
 		        	 if(j == 2){
 		        		// System.out.println("In general");
-		        		 double score = (result.getDouble("effort")*(3*((52-count)/51)));
+		        		 score = result.getDouble("effort")*(3-(0.06*(count-1)));
 		        		 textView.setText(""+ score);
-		        		 ps.setInt(1,count);
-		        		 ps.setDouble(2, score);
-		        		 ps.setString(3,result.getString("s_name"));
-		        		 ps.executeUpdate();
+		        		 
 			         }
 		             textView.setPadding(20, 20, 20, 20);
 		             tableRow.addView(textView);
+		             
 		         }
 		         tableLayout.addView(tableRow);
+		         ps.setInt(1,count);
+        		 ps.setDouble(2, score);
+        		 ps.setString(3,result.getString("s_name"));
+        		 ps.executeUpdate();
 		  	}
 		  	//tableLayout.addView(tableLayout);
 		  	//setContentView(tableLayout);

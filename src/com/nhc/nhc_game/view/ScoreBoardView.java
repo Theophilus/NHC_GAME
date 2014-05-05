@@ -35,7 +35,7 @@ public class ScoreBoardView extends Activity{
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT username, nat_rank, e_points FROM Player WHERE nat_rank IS NOT NULL GROUP BY nat_rank";
+		    String getRanks= "SELECT username, e_points FROM Player GROUP BY e_points DESC LIMIT 0, 101";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
@@ -71,14 +71,18 @@ public class ScoreBoardView extends Activity{
             //System.out.println("In true statement");
             
             //generate list
+            int count = 0;
 		  	while(result.next()){
+		  		String setRanks= "UPDATE Player SET nat_rank =? WHERE username =? ";
+		  		ps = conn.prepareStatement(setRanks);
+		  		count++;
 		  		//System.out.println("In while loop");
 		         tableRow = new TableRow(getApplicationContext());
 		         for (int j = 0; j < 3; j++) {
 		        	 textView = new TextView(getApplicationContext());
 		        	 if(j == 0){
 		        		// System.out.println("In rank");
-		        		 textView.setText(""+result.getInt("rank"));
+		        		 textView.setText(""+count);
 		        	 }
 		        	 if(j == 1){
 		        		// System.out.println("In state_name");
@@ -92,6 +96,9 @@ public class ScoreBoardView extends Activity{
 		             tableRow.addView(textView);
 		         }
 		         tableLayout.addView(tableRow);
+		         ps.setInt(1,count);
+        		 ps.setString(2,result.getString("username"));
+        		 ps.executeUpdate();
 		  	}
 		  	
 		  	//tableLayout.addView(tableLayout);

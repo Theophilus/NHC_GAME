@@ -47,7 +47,7 @@ public class ProfileView extends Activity {
         userPhone  	= (TextView) findViewById(R.id.profile_phone);
         userEmail	= (TextView) findViewById(R.id.profile_email);
         userNRank 	= (TextView) findViewById(R.id.profile_natRank);
-        userSRank	= (TextView) findViewById(R.id.profile_stateRank);
+        //userSRank	= (TextView) findViewById(R.id.profile_stateRank);
         userPoints	= (TextView) findViewById(R.id.profile_points);
         userState	= (TextView) findViewById(R.id.profile_state);
         
@@ -86,14 +86,14 @@ public class ProfileView extends Activity {
 		  			userNRank.setText("National Rank:  Not Applicable");
 		  		}
 		  		
-		  		//state rank
+		  		/*state rank
 		  		if(result.getString("state_rank") != null){
 		  			userSRank.setText("State Rank:  "+result.getString("state_rank"));
 		  		}
 		  		else {
 		  			userSRank.setText("State Rank:  Not Applicable");
 		  		}
-		  		
+		  		*/
 		  		//points
 		  		if(result.getString("e_points") != null){
 		  			userPoints.setText("Points:  "+result.getString("e_points"));
