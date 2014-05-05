@@ -185,9 +185,9 @@ public class HomeView extends Activity{
 		  		ps.setString(1,username);
 		  		ps.executeUpdate();
 		  		conn.close();
-		  		Intent i = new Intent(v.getContext(), LoginView.class);
-			    startActivity(i);
-		    conn.close();
+		  		finish();
+		  		System.exit(0);
+		    
 		    
 		} catch (Exception e){
 			System.out.println("Exception: " + e);

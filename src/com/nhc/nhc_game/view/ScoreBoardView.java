@@ -35,7 +35,7 @@ public class ScoreBoardView extends Activity{
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT username,nat_rank, e_points FROM Player GROUP BY e_points DESC";
+		    String getRanks= "SELECT username,nat_rank, e_points FROM Player GROUP BY e_points DESC LIMIT 0,100";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
@@ -72,9 +72,7 @@ public class ScoreBoardView extends Activity{
             
             //generate list
             
-		  	while(result.next()){
-		  		
-		  		
+		  	do{
 		  		//System.out.println("In while loop");
 		         tableRow = new TableRow(getApplicationContext());
 		         for (int j = 0; j < 3; j++) {
@@ -96,7 +94,7 @@ public class ScoreBoardView extends Activity{
 		         }
 		         tableLayout.addView(tableRow);
 		         
-		  	}
+		  	}while(result.next());
 		    conn.close();
             } 
 		} catch (Exception e){
