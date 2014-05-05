@@ -37,7 +37,6 @@ public class RegisterView extends Activity {
 	private Button registerButton;
 	private Button cancelButton;
 	private TextView error;
-	private Date dt;
 	
 	final Calendar c = Calendar.getInstance();;
 	private int year;
@@ -102,7 +101,7 @@ public class RegisterView extends Activity {
     	String mail= email.getEditableText().toString();
     	String sx= sex.getSelectedItem().toString();
     	String st= state.getSelectedItem().toString();
-    	dt= new Date (DOB.getDayOfMonth(),DOB.getMonth(),DOB.getYear());
+    	
     	
     	if(uname.equalsIgnoreCase("")){
     		Toast.makeText(getApplicationContext(), "username is empty",
@@ -177,7 +176,7 @@ public class RegisterView extends Activity {
     		  		ps1.setString(5, null);
     		  		ps1.setString(6, mail);
     		  		ps1.setString(7, sx);
-    		  		ps1.setDate(8 ,dt);
+    		  		ps1.setString(8 ,""+DOB.getYear()+"-"+(DOB.getMonth()+1)+"-"+DOB.getDayOfMonth());
     		  		ps1.setString(9, null);
     		  		ps1.setString(10, null);
     		  		ps1.setDouble(11, 0);

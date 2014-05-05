@@ -34,7 +34,7 @@ public class StateRankView extends Activity {
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT s_name, s_poitns,s_rank FROM Distr GROUP BY s_rank DESC ";
+		    String getRanks= "SELECT s_name, s_points,s_rank FROM Distr GROUP BY s_rank";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB

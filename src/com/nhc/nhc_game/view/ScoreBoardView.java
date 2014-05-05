@@ -35,7 +35,7 @@ public class ScoreBoardView extends Activity{
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT username,nat_rank, e_points FROM Player GROUP BY e_points DESC LIMIT 0, 201";
+		    String getRanks= "SELECT username,nat_rank, e_points FROM Player GROUP BY e_points DESC";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB

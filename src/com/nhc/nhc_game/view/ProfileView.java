@@ -136,13 +136,17 @@ public class ProfileView extends Activity {
 		  		//age
 		  		if(result.getString("DOB") != null){
 		  			//find age from (year-month-day)
-		  			Date out = result.getDate("DOB");
-		  			System.out.println("DB year: "+out.getYear()+"month: "+out.getMonth()+"day: "+ out.getDay());
-		  			System.out.println("Code year: "+c.get(Calendar.YEAR)+"month: "+c.get(Calendar.MONTH)+"day: "+ c.get(Calendar.DAY_OF_MONTH));
-		  			int yr = c.get(Calendar.YEAR) - out.getYear();
+		  			String out = result.getString("DOB");
+		  			//System.out.println("DB year: "+out.getYear()+"month: "+out.getMonth()+"day: "+ out.getDay());
+		  			//System.out.println("Code year: "+c.get(Calendar.YEAR)+"month: "+c.get(Calendar.MONTH)+"day: "+ c.get(Calendar.DAY_OF_MONTH));
+		  			String [] data = out.split("-");
+		  			int yy=Integer.parseInt(data[0]);
+		  			int mm=Integer.parseInt(data[1]);
+		  			int dd=Integer.parseInt(data[2]);
+		  			int yr = c.get(Calendar.YEAR) - yy;
 		  			System.out.println("Age: "+yr);
-					if(out.getMonth() <= c.get(Calendar.MONTH)){
-						if(out.getDay() <= c.get(Calendar.DAY_OF_MONTH)){
+					if(mm <= c.get(Calendar.MONTH)){
+						if(dd <= c.get(Calendar.DAY_OF_MONTH)){
 							
 						}
 						else{
@@ -153,9 +157,6 @@ public class ProfileView extends Activity {
 						yr = yr -1;
 					}		
 					
-					if(yr > 1900){
-						yr = yr - 1900;
-					}
 		  			userAge.setText("Age:  "+ yr +" years");
 		  		}
 		  		else {
