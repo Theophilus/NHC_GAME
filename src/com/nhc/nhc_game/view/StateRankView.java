@@ -34,7 +34,7 @@ public class StateRankView extends Activity {
 	    	//Create a connection to your DB
 		    Connection conn = DriverManager.getConnection( url, "root", "TheoMensah");
 	    	
-		    String getRanks= "SELECT s_name, part,effort FROM Distr GROUP BY part DESC ";
+		    String getRanks= "SELECT s_name, s_poitns,s_rank FROM Distr GROUP BY s_rank DESC ";
 		    PreparedStatement ps = conn.prepareStatement(getRanks);
 		    
 		  	//Run the query against the DB
@@ -59,19 +59,15 @@ public class StateRankView extends Activity {
             tableRow.addView(textView);
             
             tableLayout.addView(tableRow);
-            int count = 0;
-            double score=0;
+            
 		  	while(result.next()){
-		  		//System.out.println("In while loop");
-		  		String setRanks= "UPDATE Distr SET s_rank =?,s_points=? WHERE s_name =? ";
-    		     ps = conn.prepareStatement(setRanks);
-		  		count++;
+		  		
 		         tableRow = new TableRow(getApplicationContext());
 		         for (int j = 0; j < 3; j++) {
 		        	 textView = new TextView(getApplicationContext());
 		        	 if(j == 0){
 		        		// System.out.println("In rank");
-		        		 textView.setText(""+count);
+		        		 textView.setText(""+result.getInt("s_rank"));
 		        		 
 		        	 }
 		        	 if(j == 1){
@@ -80,9 +76,7 @@ public class StateRankView extends Activity {
 		        		 
 		        	 }
 		        	 if(j == 2){
-		        		// System.out.println("In general");
-		        		 score = result.getDouble("effort")*(3-((3/51)*(count-1)));
-		        		 textView.setText(""+ score);
+		        		 textView.setText(""+ result.getDouble("s_points"));
 		        		 
 			         }
 		             textView.setPadding(20, 20, 20, 20);
@@ -90,13 +84,9 @@ public class StateRankView extends Activity {
 		             
 		         }
 		         tableLayout.addView(tableRow);
-		         ps.setInt(1,count);
-        		 ps.setDouble(2, score);
-        		 ps.setString(3,result.getString("s_name"));
-        		 ps.executeUpdate();
+		         
 		  	}
-		  	//tableLayout.addView(tableLayout);
-		  	//setContentView(tableLayout);
+		  	
 		    conn.close();
 		    
 		} catch (Exception e){
