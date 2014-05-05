@@ -81,7 +81,7 @@ public class StateRankView extends Activity {
 		        	 }
 		        	 if(j == 2){
 		        		// System.out.println("In general");
-		        		 score = result.getDouble("effort")*(3-(0.06*(count-1)));
+		        		 score = result.getDouble("effort")*(3-((3/51)*(count-1)));
 		        		 textView.setText(""+ score);
 		        		 
 			         }
